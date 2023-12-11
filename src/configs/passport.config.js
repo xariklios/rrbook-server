@@ -9,7 +9,6 @@ const bcrypt = require('bcrypt');
 passport.use(
     new LocalStrategy(async (username, password, done) => {
         try {
-
             const user = await User.findOne({
                 $or: [{email: username}, {username: username}],
             });

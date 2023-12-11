@@ -9,9 +9,8 @@ app.use(express.json())
 // Setup session and passport
 app.use(session({
     secret: process.env.PASSPORT_KEY,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: true }
+    resave: true,
+    saveUninitialized: true,
 }));
 
 app.use(passport.initialize());

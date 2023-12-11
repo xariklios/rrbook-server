@@ -21,12 +21,14 @@ exports.registerUser = async (req, res, next) => {
 }
 
 exports.loginUser = passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     failureFlash: true,
 });
 
 exports.logoutUser = async (req, res, next) => {
-    req.logout();
-    res.redirect('/');
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+    });
 }
